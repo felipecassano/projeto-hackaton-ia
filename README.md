@@ -4,6 +4,14 @@
 
 Grupo 2 — Hackathon IA 2026.
 
+### 💻 Minha Contribuição no Projeto
+
+Projeto desenvolvido durante o **Hackathon IA COPPE 2026** (Grupo 02). Atuei como desenvolvedor principal na arquitetura e implementação ponta a ponta da solução:
+
+- **Backend (`api/`):** Arquitetura e desenvolvimento da API REST em **NestJS + TypeORM** com **PostgreSQL 16**, modelagem de normas/trechos, motor de cruzamento de limites regulatórios com o perfil da usina e sistema de disparo de alertas.
+- **Frontend (`web/`):** Interface em **React + Vite + Tailwind CSS**, integrando o painel de monitoramento, central de alertas, feed de notícias do setor e interface de chat do copiloto com citações.
+- **Integração de IA & Infra (`ai/` e `infra/`):** Integração do fluxo de ingestão do DOU e RAG (`/ask`) via API, conteinerização com **Docker Compose** e configuração para deploy na AWS.
+
 ## Como funciona
 
 ```
@@ -30,8 +38,8 @@ coleta do DOU ──▶ classificador ──▶ resumidor ──POST /interno/in
 ## Como rodar o projeto
 
 ```bash
-git clone git@github.com:Hackathon-IA-2026/solucoes-grupo-02.git
-cd solucoes-grupo-02
+git clone https://github.com/felipecassano/projeto-hackaton-ia.git
+cd projeto-hackaton-ia
 cp .env.example .env          # preencha DB_*, JWT_SECRET e INTERNAL_API_KEY
 
 docker compose up             # Postgres + API (http://localhost:3333) + web (http://localhost:5173) + serviço de IA
@@ -66,14 +74,14 @@ As normas-base vêm do Planalto (Lei 14.300, Lei 15.097 — lista em `ai/functio
 
 ### Variáveis de ambiente principais
 
-| Variável | Para quê |
-| --- | --- |
-| `DB_USER`, `DB_PASSWORD`, `DB_NAME` | Postgres |
-| `JWT_SECRET` | login |
-| `INTERNAL_API_KEY` | chave que o serviço Python manda em `x-internal-key` para gravar normas (`POST /interno/ingestao`) |
-| `AI_SERVICE_URL` | opcional: URL do serviço de RAG do copiloto; sem ela, o copiloto busca por palavra-chave |
-| `SMTP_*` | opcional: sem SMTP, os e-mails de alerta e de senha só aparecem no log |
-| `WEB_URL` | link do front usado nos e-mails |
+| Variável                            | Para quê                                                                                           |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `DB_USER`, `DB_PASSWORD`, `DB_NAME` | Postgres                                                                                           |
+| `JWT_SECRET`                        | login                                                                                              |
+| `INTERNAL_API_KEY`                  | chave que o serviço Python manda em `x-internal-key` para gravar normas (`POST /interno/ingestao`) |
+| `AI_SERVICE_URL`                    | opcional: URL do serviço de RAG do copiloto; sem ela, o copiloto busca por palavra-chave           |
+| `SMTP_*`                            | opcional: sem SMTP, os e-mails de alerta e de senha só aparecem no log                             |
+| `WEB_URL`                           | link do front usado nos e-mails                                                                    |
 
 ## Pré-requisitos
 
